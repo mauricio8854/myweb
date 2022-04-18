@@ -100,10 +100,12 @@
 							<a class="nav-link" href="charts.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 								Gráficos</a
-								><a class="nav-link" href="tabla.php"
-								><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-									Productos</a
-								>
+								><a <?php if($tipo_usuario == 1) { ?> class="nav-link" href="tabla1.php" <?php } ?>
+								   <?php if($tipo_usuario == 2) { ?> class="nav-link" href="tabla.php" <?php } ?>
+                                ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Productos</a
+                            >
+								
 							</div>
 					</div>
                     <div class="sb-sidenav-footer">

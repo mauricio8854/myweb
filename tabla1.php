@@ -2,6 +2,7 @@
 <?php
 	session_start();
 	require 'conexion.php';
+	require_once "./controlador.php";
 	
 	if(!isset($_SESSION['id'])){
 		header("Location: index.php");
@@ -131,22 +132,25 @@
 											</tr>
 										</tfoot>
 										<tbody>
+											<?php
 
-											
-											<?php while($row = $resultado->fetch_assoc()) { ?>
+											$db = db::getDBConnection();
+											$Respuesta = $db->getCards();
+											while($Card = $Respuesta->fetch_assoc()) {
 												
-												<tr>
-													<td><input type='radio' name='card' value='".$Card['nombre']."'></td>
-													<td><?php echo $row['usuario']; ?></td>
-													<td><?php echo $row['password']; ?></td>
-													<td><?php echo $row['nombre']; ?></td>
-													<td><?php echo $row['tipo_usuario']; ?></td>
-													<td><?php echo $row['ahorros']; ?></td>
-													<td><?php echo $row['creditos']; ?></td>
-													<td><?php echo $row['aportes']; ?></td>
-													<td><?php echo $row['beneficios']; ?></td>
-												</tr>
-											<?php } ?>
+												print("<tr>");
+													print("<td><input type='radio' name='card' value='".$Card['nombre']."'></td>");
+													print("<td>".$Card['usuario']."</td>");
+													print("<td>".$Card['password']."</td>");
+													print("<td>".$Card['nombre']."</td>");
+													print("<td>".$Card['tipo_usuario']."</td>");
+													print("<td>".$Card['ahorros']."</td>");
+													print("<td>".$Card['creditos']."</td>");	
+													print("<td>".$Card['aportes']."</td>");	
+													print("<td>".$Card['beneficios']."</td>");	
+												print("</tr>");
+												}
+											 ?>
 										</tbody>
 									</table>
 

@@ -80,7 +80,7 @@
                             <a class="nav-link" href="charts.php"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Gráficos</a
-                            ><a class="nav-link" href="tables.php"
+                            ><a class="nav-link" href="tabla.php"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tablas</a
                             >

@@ -3,7 +3,7 @@
 define("HOST", "localhost");
 define("USER", "root");
 define("PASS", "");
-define("DBNAME", "tarjetas");
+define("DBNAME", "sistema");
 define("PORT", 3306);
 
 class DB extends mysqli{
@@ -28,43 +28,47 @@ class DB extends mysqli{
 	}
 	
 	function getCards(){
-		$consulta = "SELECT * FROM productos LIMIT 10";
-		print($consulta."<br>");
+		$consulta = "SELECT * FROM usuarios LIMIT 200";
+		
 		return $this->query($consulta);
 	}
 
 	function getCard($cardName){
-		$consulta = "SELECT * FROM productos WHERE nombre='".$cardName."'";
+		$consulta = "SELECT * FROM usuarios WHERE usuario='".$cardName."'";
 		print($consulta."<br>");
 		return $this->query($consulta);
 	}
 
-	function createCard($cardName,$desc,$precio,$imagen){
-		$consulta = "INSERT INTO productos (nombre,descripcion,precio,imagen) VALUE("
+	function createCard($cardName,$pass,$nombre,$tipo,$ahorr,$cred,$aport,$bene){
+		$consulta = "INSERT INTO usuarios (usuario,password,nombre,tipo_usuario,ahorros,creditos,aportes,beneficios) VALUE("
 			."'".$cardName."', "
-			."'".$desc."', "
-			.$precio.", "
-			."'".$imagen."')";
+			."'".$pass."', "
+			."'".$nombre."', "
+			."'".$tipo."', "
+			."'".$ahorr."', "
+			."'".$cred."', "
+			."'".$aport."', "
+			."'".$bene."')";
 		print($consulta."<br>");
 		return $this->query($consulta);
 	}
 
 	function deleteCard($cardName){
-		$consulta = "DELETE FROM productos WHERE nombre='".$cardName."'";
+		$consulta = "DELETE FROM usuarios WHERE nombre='".$cardName."'";
 		print($consulta."<br>");
 		return $this->query($consulta);
 	}
 
 	function updateCard($cardName, $newCardName,$desc,$precio,$imagen = ""){
 		if($imagen!=""){
-			$consulta = "UPDATE productos SET "
+			$consulta = "UPDATE usuarios SET "
 			."nombre='".$newCardName."',"
 			."descripcion='".$desc."', "
 			."precio=".$precio.", "
 			."imagen='".$imagen."' "
 			."WHERE nombre='".$cardName."'";
 		} else {
-			$consulta = "UPDATE productos SET "
+			$consulta = "UPDATE usuarios SET "
 			."nombre='".$newCardName."',"
 			."descripcion='".$desc."', "
 			."precio=".$precio." "
